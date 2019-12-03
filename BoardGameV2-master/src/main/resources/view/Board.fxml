@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oosd.view.BoardView">
+    <center>
+        <GridPane fx:id="gridPane" prefHeight="804.0" prefWidth="1509.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" prefWidth="0.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+            <RowConstraints minHeight="0.0" percentHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <AnchorPane prefHeight="85.0" prefWidth="153.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="151.0" layoutY="1.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="107.0" fitWidth="150.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="104.0" fitWidth="149.0" layoutX="1.0" layoutY="-1.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="102.0" fitWidth="150.0" layoutX="2.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="102.0" fitWidth="150.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="104.0" fitWidth="149.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="152.0" layoutY="-1.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="149.0" layoutY="-1.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" layoutX="-1.0" layoutY="4.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="70.0" prefWidth="153.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="94.0" fitWidth="151.0" layoutY="4.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="101.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="101.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="151.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="3">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="101.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="106.0" prefWidth="101.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="4">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane layoutX="210.0" layoutY="359.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fitHeight="102.0" fitWidth="150.0" layoutX="1.0" layoutY="4.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="151.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="146.0" layoutX="2.0" layoutY="-3.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="151.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                    
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="101.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                    
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="151.0" layoutY="1.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                    
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="147.0" layoutX="2.0" layoutY="-1.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="7" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="101.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="84.0" prefWidth="142.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="9" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="10" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="101.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="101.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="4" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="5" GridPane.rowIndex="6">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="8" GridPane.rowIndex="7">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="151.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0E1111; -fx-border-color: #04f4d6;" GridPane.columnIndex="6" GridPane.rowIndex="8">
+               <children>
+                  <ImageView fitHeight="103.0" fitWidth="152.0" onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" onDragOver="#imageDragOver" onMouseClicked="#onPieceClickedForAttack" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true">
+                     
+                  </ImageView>
+               </children></AnchorPane>
+            </children>
+        </GridPane>
+    </center>
+   <top>
+      <Pane prefHeight="110.0" prefWidth="1500.0" style="-fx-border-color: #04f4d6; -fx-background-color: #0E1111;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="409.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Turn:" wrappingWidth="170.6708984375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="currentPlayerText" fill="WHITE" layoutX="559.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="159.08544921875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="messageText" fill="#ff0101" layoutX="827.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="667.6708984375">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="730.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/timerImage.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="timerText" fill="#FFFFFF" layoutX="769.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="29.13671875">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="saveButton" layoutX="624.0" layoutY="55.0" mnemonicParsing="false" onAction="#onSaveButtonClick" prefHeight="31.0" prefWidth="88.0" text="Save" />
+            <Button layoutX="76.0" layoutY="6.0" mnemonicParsing="false" onAction="#onAttackButtonClicked" text="Attack" />
+            <Button layoutX="267.0" layoutY="6.0" mnemonicParsing="false" onAction="#onDefenceButtonClicked" text="Defence" />
+            <Button fx:id="undoButton" disable="true" layoutX="551.0" layoutY="55.0" mnemonicParsing="false" onAction="#onUndoButtonClick" text="Undo" />
+            <Text fill="WHITE" layoutX="6.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:" wrappingWidth="77.6708984375">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="6.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Attacking Power: ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="188.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defence: ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="409.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Other Actions: ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="attackingPowerChoices" layoutX="229.0" layoutY="57.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

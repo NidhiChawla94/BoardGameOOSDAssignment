@@ -1,0 +1,232 @@
+package com.oosd.model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Invariant;
+import com.google.java.contract.Requires;
+import com.oosd.healers.Healer;
+import com.oosd.util.Constants;
+
+/**
+ * 
+ * @author Siddharth Sachdeva
+ * @version 1.0
+ * @classDesciption The Board Class program creates the new board with Pieces
+ *                  and Hurdles
+ * 
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Invariant("pieces != null")
+public class Board {
+
+	// Instance Variables
+	private List<Piece> pieces; // Declare of List of Pieces.
+
+	@JsonIgnore
+	private List<Healer> healers = new ArrayList<Healer>(); // Declare the list of healers
+
+	/**
+	 * Board Constructor
+	 */
+	public Board() {
+		
+	}
+	
+   /**
+    * get the healer from the 
+    * @return healers
+    */
+	public List<Healer> getHealers() {
+		return healers;
+	}
+
+
+	/**
+	 * set the list of healers
+	 * @param healers
+	 */
+	public void setHealers(List<Healer> healers) {
+		this.healers = healers;
+	}
+
+	/**
+	 * Gets the list of pieces
+	 * 
+	 * @return pieces
+	 */
+	public List<Piece> getPieces() {
+		return pieces;
+	}
+
+	@Ensures("alivePieces != null")
+	public List<Piece> getAlivePieces() {
+		List<Piece> alivePieces = new ArrayList<Piece>();
+		for (Piece piece : pieces) {
+			if (piece.isAlive()) {
+				alivePieces.add(piece);
+			}
+		}
+		return alivePieces;
+	}
+
+	/**
+	 * sets the list of pieces
+	 * 
+	 * @param pieces
+	 */
+	public void setPieces(List<Piece> pieces) {
+		this.pieces = pieces;
+	}
+
+	/**
+	 * Get the new Piece
+	 * 
+	 * @param piece
+	 */
+	public void addNewPiece(Piece piece) {
+		getPieces().add(piece);
+	}
+
+	/**
+	 * 
+	 * @param id
+	 *            Defines Piece id
+	 * @return piece Get particular piece by its id.
+	 */
+	@Requires("id != null && !id.isEmpty()")
+	public Piece getPieceById(String id) {
+		List<Piece> pieces = this.getPieces();
+		for (Piece piece : pieces) {
+			if (piece.getId().equals(id)) {
+				return piece;
+			}
+		}
+		return null;
+	}
+
+	/*
+	 * public List<Location> getLocations() { return locations; }
+	 * 
+	 * public void setLocations(List<Location> locations) { this.locations =
+	 * locations; }
+	 */
+	/**
+	 *  this method get the pieces by team name
+	 * @param team
+	 *            Defines the team name
+	 * @return teamPieces
+	 * 
+	 */
+	@Requires({ "team.equals(Constants.AVENGER) || team.equals(Constants.XMEN)" })
+	public List<Piece> getPiecesByTeam(String team) {
+		List<Piece> teamPieces = new ArrayList<Piece>();
+		teamPieces = getPieces().stream().filter(p -> p.getTeamName().equalsIgnoreCase(team))
+				.collect(Collectors.toList());
+		return teamPieces;
+	}
+
+	/**
+	 * Display the Combat(attack/defense) ability of Either team
+	 * 
+	 * @param team
+	 */
+	public void disableOpponentCombatAbility(String team) {
+		List<Piece> teamPieces = new ArrayList<Piece>();
+		teamPieces = getPieces().stream().filter(p -> !p.getTeamName().equalsIgnoreCase(team))
+				.collect(Collectors.toList());
+
+		for (Piece piece : teamPieces) {
+			if (piece.isDefenceModeEnabled()) {
+				piece.disableDefenceMode();
+			}
+
+		}
+	}
+
+	/**
+	 * 
+	 * @param row
+	 * @param col
+	 * @return piecePresentOnLocation
+	 */
+	public boolean checkIfPieceOnLocation(int row, int col) {
+		boolean piecePresentOnLocation = false;
+		for (Piece piece : getPieces()) {
+			if (piece.getLocation().getyCoordinate() == col && piece.getLocation().getxCoordinate() == row) {
+				piecePresentOnLocation = true;
+			}
+
+		}
+		return piecePresentOnLocation;
+	}
+
+	/**
+	 * this method if the healer location 
+	 * @param row
+	 * @param col
+	 * @return healerPresentOnLocation
+	 */
+	public boolean checkIfHealerOnLocation(int row, int col) {
+		boolean healerPresentOnLocation = false;
+		if (!healers.isEmpty()) {
+			for (Healer healer : healers) {
+				if (healer.getLocation().getyCoordinate() == col && healer.getLocation().getxCoordinate() == row) {
+					healerPresentOnLocation = true;
+				}
+
+			}
+		}
+
+		return healerPresentOnLocation;
+	}
+	
+	/**
+	 * 
+	 * @return emptyLoc
+	 */
+
+	@Ensures("emptyLoc != null")
+	public Location getEmptyLocation() {
+		Random rand = new Random();
+		boolean emptyLocationFound = true;
+		boolean piecePresentOnLocation = false;
+		boolean healerPresentOnLocation = false;
+		Location emptyLoc = new Location();
+		while (emptyLocationFound) {
+			int row = rand.nextInt(Constants.MAX_ROW) + Constants.MIN_ROW;
+			int col = rand.nextInt(Constants.MAX_COLUMN) + Constants.MIN_COLUMN;
+			piecePresentOnLocation = checkIfPieceOnLocation(row, col);
+			healerPresentOnLocation = checkIfHealerOnLocation(row, col);
+			if (!piecePresentOnLocation && !healerPresentOnLocation) {
+				emptyLoc.setxCoordinate(row);
+				emptyLoc.setyCoordinate(col);
+				emptyLocationFound = false;
+			}
+		}
+		return emptyLoc;
+	}
+	
+	/**
+	 * 
+	 * @param xCoordinateOfHealer
+	 * @param yCoordinateOfHealer
+	 */
+	@Ensures("!board.contains(healer)")
+	public void removeHealerFromLocation(int xCoordinateOfHealer, int yCoordinateOfHealer) {
+		List<Healer> healerTemp = new ArrayList<>(healers);
+
+		for (Healer healerLocation : healerTemp) {
+			if (healerLocation.getLocation().getxCoordinate() == xCoordinateOfHealer
+					&& healerLocation.getLocation().getyCoordinate() == yCoordinateOfHealer) {
+				healers.remove(healerLocation);
+			}
+		}
+	}
+
+}

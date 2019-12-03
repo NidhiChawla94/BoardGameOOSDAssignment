@@ -1,0 +1,632 @@
+package com.oosd.view;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import com.oosd.controller.BoardController;
+import com.oosd.healers.Healer;
+import com.oosd.model.Location;
+import com.oosd.model.Piece;
+import com.oosd.util.CommonUtility;
+import com.oosd.util.Constants;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+
+/**
+ * 
+ * 
+ * @author Nidhi Chawla
+ * @version 2.0
+ * @classDescription Displays the Warrior Combat game page of the UI by
+ *                   Implementing initializable interface by automatically .
+ *                   inserting location and resources properties into the
+ *                   controller.
+ * 
+ */
+public class BoardView implements Initializable {
+
+	/**
+	 * 
+	 * These are the FXML variables that are set in Board.fxml and
+	 * linked to board controller. These FXML variables regulates with 
+	 * written methods and runs the game. 
+	 * 
+	 */
+	
+	//Define the gridPane component.
+	@FXML
+	private GridPane gridPane;
+
+	//Define the text component for currentPlayer 
+	@FXML
+	private Text currentPlayerText;
+
+	//Define the text component for Display message
+	@FXML
+	private Text messageText;
+
+	//Define the button component to perform undo action
+	@FXML
+	private Button undoButton;
+
+	//Define the Button to save the game
+	@FXML
+	private Button saveButton;
+
+	//Define the imageview component for timer
+	@FXML
+	private ImageView timerImage;
+
+	//Check for succesfulmove
+	private boolean successfulMove;
+
+	//text Component for Display timer
+	@FXML
+	private Text timerText;
+
+	@FXML // Define ChoiceBox component to setlect the attacking power
+	private ChoiceBox<String> attackingPowerChoices;
+	int clickCount = 0;
+
+	Timer timer = new Timer();
+	Timer turnTimer = new Timer();
+
+	//
+	private boolean attackButtonClicked = false;
+	private boolean defenceButtonClicked = false;
+	private ImageView dragSource, dragTarget;
+	private Dragboard db;
+	private BoardController boardController;
+	private boolean undoButtonClicked = false;
+	private int noOfTimesUndoClicked = 0;
+	private String attackingPieceId;
+	private boolean attackCompleted = true;
+	public int countdown = 15;
+	public int col, row;
+
+	public Piece prevPiece;
+
+	public Queue<Piece> defPiece = new LinkedList<Piece>();
+
+	turnTime sh = new turnTime();
+	int noOfOpponentMoves=0;
+
+	public void initialize(URL location, ResourceBundle resources) {
+		boardController = BoardController.getInstance();
+		currentPlayerText.setText(boardController.getCurrentPlayerName());
+		setInitialLocationOfPieces();
+		attackingPowerChoices.getItems().clear();
+
+		turnTimer.schedule(sh, 0, 1000);
+	}
+
+<<<<<<< HEAD
+=======
+
+	/**
+	 * 
+	 * turnTime class extends the one time
+	 * TimerTask to run the count down
+	 * for each team.
+	 *
+	 */
+>>>>>>> origin/master
+	class turnTime extends TimerTask {
+
+		public void run() {
+			if (countdown <= -1) {
+				toggleTurn();
+				attackButtonClicked = false;
+				defenceButtonClicked = false;
+				attackCompleted = true;
+				attackingPowerChoices.setDisable(true);
+				countdown = 16;
+			} else
+				timerText.setText(Integer.toString(countdown));
+			countdown--;
+		}
+	}
+
+	/**
+	 * this method set the initial location of all the pieces 
+	 * on board with respective id and image of individual piece .
+	 */
+	private void setInitialLocationOfPieces() {
+		try {
+			List<Piece> pieces = boardController.getPieces();
+			for (Piece piece : pieces) {
+				AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(piece.getLocation().getyCoordinate(),
+						piece.getLocation().getxCoordinate());
+				ImageView imgView = (ImageView) anchorPane.getChildren().get(0);
+				imgView.setImage(new Image(piece.getImagePath()));
+				imgView.setId(piece.getId());
+				imgView.setPreserveRatio(true);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * This method performs the image hover operation
+	 * when the mouse is pointed on the piece
+	 * @param event
+	 */
+	@FXML
+	void onMouseEntered(MouseEvent event) {
+
+		if (!attackButtonClicked) {
+			ImageView clickedNode = (ImageView) event.getPickResult().getIntersectedNode();
+			if (clickedNode.imageProperty().get() != null) {
+				if (!clickedNode.getId().startsWith("HEALER_")) {
+					ImageView hoverSource = (ImageView) event.getPickResult().getIntersectedNode();
+					for (Location location : boardController.getAvailableMovesForPiece(hoverSource.getId())) {
+						AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(location.getyCoordinate(),
+								location.getxCoordinate());
+						BoxBlur bb = new BoxBlur();
+						anchorPane.setEffect(bb);
+						anchorPane.setStyle("-fx-border-color:#04f4d6; -fx-background-color:#038A15");
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * this method set the node style to same background
+	 * when the mouse is exited from the gridpane.
+	 * 
+	 * @param event
+	 */
+	@FXML
+	void onMouseExited(MouseEvent event) {
+		if (!attackButtonClicked) {
+			attackingPowerChoices.getItems().clear();
+			for (Node node : gridPane.getChildren()) {
+				node.setEffect(null);
+				node.setStyle("-fx-border-color:#04f4d6; -fx-background-color:#0E1111");
+			}
+		}
+
+	}
+
+	/**
+	 * This method performs the image drag and drop  
+	 * gesture
+	 * @param de
+	 */
+	@FXML
+	void imageDragOver(DragEvent de) {
+		if (de.getDragboard().hasImage()) {
+			/* allow for both copying and moving, whatever user chooses */
+			de.acceptTransferModes(TransferMode.ANY);
+		}
+		de.consume();
+	}
+
+	/**
+	 * This method grab the image from board source location 
+	 * when the drag event is detected.
+	 * @param event
+	 */
+	@FXML
+	void onDragDetected(MouseEvent event) {
+		messageText.setText("");
+		if (!attackButtonClicked && !defenceButtonClicked) {
+			messageText.setText("Please select atleast one combat Ability: Attack/Defence");
+		} else if (!attackCompleted) {
+			messageText.setText(
+					"You have already moved its now your turn to attack. Please choose power to attack and click on piece to attack");
+		} else {
+			if (event.getPickResult().getIntersectedNode() instanceof ImageView) {
+				dragSource = (ImageView) event.getPickResult().getIntersectedNode();
+				if (!dragSource.getId().startsWith("HEALER_")) {
+					db = dragSource.startDragAndDrop(TransferMode.ANY);
+					ClipboardContent content = new ClipboardContent();
+
+					content.putImage(dragSource.getImage());
+					content.putString(dragSource.getId());
+					db.setContent(content);
+					event.consume();
+				} else {
+					messageText.setText("You can not move Healer");
+				}
+			} else {
+				messageText.setText("Please drag image.");
+			}
+
+		}
+
+	}
+	
+	/**
+	 * This method grab the image from board source location 
+	 * when the drag event is detected.
+	 * @param event
+	 */
+	@FXML
+	void onDragDropped(DragEvent event) {
+
+		db = event.getDragboard();
+		if (db.hasImage()) {
+			dragTarget = (ImageView) event.getPickResult().getIntersectedNode();
+			Integer colIndex = GridPane.getColumnIndex(dragTarget.getParent());
+			Integer rowIndex = GridPane.getRowIndex(dragTarget.getParent());
+			Location destination = new Location(rowIndex, colIndex);
+			try {
+				successfulMove = boardController.move(dragSource.getId(), destination);
+				if (undoButtonClicked) {
+					boardController.playerPlayedUndo();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+		}
+
+		/*
+		 * let the source know whether the string was successfully transferred
+		 * and used
+		 */
+		event.setDropCompleted(successfulMove);
+
+		event.consume();
+	}
+	
+	
+	/**
+	 * This method is implmented when the pieces are dragged from
+	 *  source to target location and set the image and id. 
+	 * @param event
+	 */
+
+	@FXML
+	void onDragDone(DragEvent event) {
+
+		// countdown=-1;
+		undoButton.setDisable(false);
+		undoButtonClicked = false;
+		noOfTimesUndoClicked = 0;
+		if (event.getTransferMode() == TransferMode.MOVE) {
+			if (dragTarget.getImage() != null) {
+				if (dragTarget.getId().startsWith("HEALER_")) {
+					Integer colIndex = GridPane.getColumnIndex(dragTarget.getParent());
+					Integer rowIndex = GridPane.getRowIndex(dragTarget.getParent());
+					Piece pieceHealed = boardController.getPieceById(dragSource.getId());
+					boardController.heal(dragTarget.getId(), rowIndex, colIndex, pieceHealed);
+					messageText.setText(
+							pieceHealed.getName() + " is Healed. New Life volume is: " + pieceHealed.getLifeVolume());
+				}
+			}
+			dragTarget.setImage(db.getImage());
+			dragTarget.setId(dragSource.getId());
+			dragTarget.setFitWidth(149.0);
+			dragTarget.setPreserveRatio(true);
+			dragSource.imageProperty().set(null);
+			addEnergiesIfNotified();
+			enableCombatAbilities(dragTarget.getId());
+			dragSource.setId("");
+			checkUndoAvailable();
+			event.acceptTransferModes(TransferMode.ANY);
+			dragSource.imageProperty().set(null);
+			noOfOpponentMoves++;
+
+		} else {
+			messageText.setText("Invalid Move.");
+		}
+		event.consume();
+		if (boardController.isFinishGameNotified()) {
+			try {
+				CommonUtility.openNewScene("Result");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * This method generate the healer with respective image
+	 * and respective healer id when the add energies is notified
+	 */
+	private void addEnergiesIfNotified() {
+		if (boardController.isEnergyNotified()) {
+			Healer healer = boardController.generateHealer();
+			AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(healer.getLocation().getyCoordinate(),
+					healer.getLocation().getxCoordinate());
+			ImageView imgView = (ImageView) anchorPane.getChildren().get(0);
+			imgView.setImage(new Image(healer.getImagePath()));
+			imgView.setId(healer.getHealerId());
+			imgView.setPreserveRatio(true);
+			boardController.setEnergyNotified(false);
+		}
+
+	}
+
+	/**
+	 * This method enable the combat abilities for 
+	 * the pieces which is attack mode.
+	 * @param pieceId
+	 */
+	private void enableCombatAbilities(String pieceId) {
+		if (attackButtonClicked) {
+			attackCompleted = false;
+			messageText.setText("Please select power from dropdown to attack");
+			attackingPowerChoices.setDisable(false);
+			List<String> powerList = boardController.getPowerListOfPiece(pieceId);
+			attackingPowerChoices.getItems().addAll(powerList);
+			attackingPowerChoices.getSelectionModel().selectFirst();
+			attackingPieceId = pieceId;
+		}
+		if (defenceButtonClicked) {
+			boardController.activateDefenceMode(pieceId);
+			toggleTurn();
+		}
+	}
+
+	/**
+	 * This method check if the undo operation 
+	 * can be performed
+	 */
+	private void checkUndoAvailable() {
+		if (boardController.playedAllowedToUndo()) {
+			undoButton.setDisable(false);
+		} else {
+			undoButton.setDisable(true);
+		}
+	}
+
+	/**
+	 * This method checks the piece is selected for attack
+	 * @param event
+	 */
+	@FXML
+	void onPieceClickedForAttack(MouseEvent event) {
+		// attack logic
+
+		if (attackButtonClicked && attackingPowerChoices.getValue() != null) {
+			ImageView clickTarget = (ImageView) event.getPickResult().getIntersectedNode();
+			if (clickTarget.imageProperty().get() != null) {
+				Piece attackingPiece = boardController.getPieceById(attackingPieceId);
+				Piece attackedPiece = boardController.getPieceById(clickTarget.getId());
+				String isValidAttack = boardController.validateAttack(attackingPiece, attackedPiece);
+				if (isValidAttack == null) {
+					attackOnPiece(attackingPiece, attackedPiece);
+				} else {
+					messageText.setText(isValidAttack);
+				}
+			}
+
+		}
+	}
+<<<<<<< HEAD
+
+	void attackOnPiece(Piece attackingPiece, Piece attackedPiece) {
+		attackButtonClicked = false;
+		boardController.attack(attackingPiece, attackedPiece, attackingPowerChoices.getValue());
+=======
+     
+	/**
+	 * this method checks when the piece is being attacked
+	 * 
+	 * @param attackingPiece
+	 * @param attackedPiece
+	 */
+	void attackOnPiece(Piece attackingPiece, Piece attackedPiece){
+		attackButtonClicked=false;
+		boardController.attack(attackingPiece,attackedPiece , attackingPowerChoices.getValue());
+>>>>>>> origin/master
+		attackCompleted = true;
+		AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(attackedPiece.getLocation().getyCoordinate(),
+				attackedPiece.getLocation().getxCoordinate());
+		if (boardController.isPieceKilledNotified()) {
+			boardController.setPieceKilledNotified(false);
+			ImageView imgView = (ImageView) anchorPane.getChildren().get(0);
+			imgView.setId("");
+			imgView.imageProperty().set(null);
+			messageText.setText(attackingPiece.getName() + " successfully attacked on: " + attackedPiece.getName()
+			+ " using " + attackingPowerChoices.getValue() + ". This piece is now dead.");
+		} else {
+			messageText.setText(attackingPiece.getName() + " successfully attacked on: " + attackedPiece.getName()
+			+ " using " + attackingPowerChoices.getValue() + ". New Life of piece is: "
+			+ attackedPiece.getLifeVolume());
+		}
+		toggleTurn();
+
+	}
+<<<<<<< HEAD
+
+=======
+	/**
+	 * Performs the switch operation when the timer of 15secs
+	 * is completed for each team 
+	 */
+>>>>>>> origin/master
+	private void toggleTurn() {
+		if (attackButtonClicked || defenceButtonClicked) {
+			countdown = 15;
+			prevPiece = boardController.getPieceById(dragSource.getId());
+			if (defPiece.size() <= 2) {
+				defPiece.add(prevPiece);
+			}
+		} else if (countdown <= 0) {
+			countdown = 16;
+		} else {
+			countdown = 15;
+		}
+		boardController.toggleTurn();
+		String currenPlayerName = boardController.getCurrentPlayerName();
+		currentPlayerText.setText(currenPlayerName);
+	}
+
+	/**
+	 * This action save the game status when
+	 * the save button is clicked.
+	 * @param action
+	 */
+	@FXML
+	public void onSaveButtonClick(ActionEvent action) {
+		boardController.saveGame();
+		messageText.setText("Game saved!!");
+	}
+
+<<<<<<< HEAD
+=======
+	public int col,row; // Define the col and row variable
+
+	public Piece prevPiece; // Declare the prevPiece reference object of piece
+
+	public Queue<Piece> defPiece = new LinkedList<Piece>(); // Declare the queue for the pieces in defense mode 
+>>>>>>> origin/master
+
+	/**
+	 * This method put the piece on attack mode when the 
+	 * attack button is clicked
+	 * @param action
+	 */
+	@FXML
+	public void onAttackButtonClicked(ActionEvent action) {
+		defenceButtonClicked = false;
+		attackButtonClicked = true;
+
+		try {
+			if (noOfOpponentMoves == 2) {
+				Piece oldPiece = boardController.getOldPiece(defPiece.remove());
+				AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(oldPiece.getLocation().getyCoordinate(),
+						oldPiece.getLocation().getxCoordinate());
+				anchorPane.setStyle("-fx-border-color:#04f4d6; -fx-background-color:#0E1111");
+				oldPiece.disableDefenceMode();
+			}
+		} catch (NullPointerException e) {
+
+		}
+<<<<<<< HEAD
+	}
+=======
+	}*/
+
+	/**
+	 * This method put the piece on defense mode when the 
+	 * Defense button is clicked 
+	 * @param action
+	 */
+>>>>>>> origin/master
+
+	public void onDefenceButtonClicked(ActionEvent action) {
+		defenceButtonClicked = true;
+		attackingPowerChoices.setDisable(true);
+		attackingPowerChoices.getItems().clear();
+		try {
+			if (noOfOpponentMoves == 2) {
+				Piece oldPiece = boardController.getOldPiece(defPiece.remove());
+				AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(oldPiece.getLocation().getyCoordinate(),
+						oldPiece.getLocation().getxCoordinate());
+				anchorPane.setStyle("-fx-border-color:#04f4d6; -fx-background-color:#0E1111");
+				oldPiece.disableDefenceMode();
+			}
+		} catch (NullPointerException e) {
+
+		}
+	}
+
+	/**
+	 * This method performs the undo operation using the piece id
+	 * and respective image of piece from Anchorpane and move it back 
+	 * to old position
+	 * @param action
+	 */
+	@FXML
+	public void onUndoButtonClick(ActionEvent action) {
+		noOfTimesUndoClicked++;
+		attackButtonClicked = false;
+		defenceButtonClicked = false;
+		attackCompleted = true;
+		undoButtonClicked = true;
+		Piece piece = boardController.undoMove();
+		Piece oldPiece = boardController.getOldPiece(piece);
+
+		if (!piece.isAlive()) {
+			boardController.getPieces().add(piece);
+			piece.setAlive(true);
+		} else {
+			AnchorPane anchorPane2 = (AnchorPane) getNodeFromGridPane(oldPiece.getLocation().getyCoordinate(),
+					oldPiece.getLocation().getxCoordinate());
+			ImageView imgView2 = (ImageView) anchorPane2.getChildren().get(0);
+			imgView2.imageProperty().set(null);
+			imgView2.setId(Constants.EMPTY);
+<<<<<<< HEAD
+=======
+			
+>>>>>>> origin/master
+			anchorPane2.setStyle("-fx-border-color:#04f4d6; -fx-background-color:#0E1111");
+			boardController.replacePiece(oldPiece, piece);
+		}
+		AnchorPane anchorPane = (AnchorPane) getNodeFromGridPane(piece.getLocation().getyCoordinate(),
+				piece.getLocation().getxCoordinate());
+		ImageView imgView = (ImageView) anchorPane.getChildren().get(0);
+		imgView.setImage(new Image(piece.getImagePath()));
+		imgView.setId(piece.getId());
+		imgView.setPreserveRatio(true);
+		if (boardController.caretaker.getCount() == 0 || noOfTimesUndoClicked == 3) {
+			undoButton.setDisable(true);
+		} else {
+			undoButton.setDisable(false);
+		}
+	}
+
+<<<<<<< HEAD
+=======
+	/**
+	 * This method identifies the row index and column index in gridpane
+	 * and return the respective node
+	 * @param col 
+	 * @param row
+	 * @return node
+	 */
+
+>>>>>>> origin/master
+	private Node getNodeFromGridPane(int col, int row) {
+		for (Node node : gridPane.getChildren()) {
+			if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+				return node;
+			}
+		}
+		return null;
+	}
+
+<<<<<<< HEAD
+=======
+	/**
+	 * this method get the update from observer 
+	 * when the multiple of 5 move is completed
+	 */
+	public void updateFromObserver() {
+
+		messageText.setText("Multiple of 5 moves achieved.");
+
+	}
+
+>>>>>>> origin/master
+}

@@ -1,0 +1,42 @@
+package com.oosd.commands;
+
+<<<<<<< HEAD
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Invariant;
+import com.oosd.decorator.Location;
+=======
+import com.oosd.model.Location;
+>>>>>>> 523959c49af6f3d842f0c3d4d3deafabd3a2f1f0
+import com.oosd.model.Piece;
+import com.oosd.observables.MoveReceiverObservable;
+
+
+/**
+* 
+* @author  Nidhi Chawla
+* @version 1.0
+* @classDescription Concrete command class for Move Command.
+* 
+*/
+
+@Invariant("piece!=null,destination!=null")
+public class MoveCommand implements Command {
+	
+	private Piece piece ;
+	private Location destination;
+	
+	public MoveCommand(Piece pieceToBeMoved, Location destination) {
+		super();
+		this.piece = pieceToBeMoved;
+		this.destination = destination;
+		
+	}
+
+	@Ensures("piece.xcoordinate== destination.xcoordinate && piece.ycoordinate == destination.ycoordinate")
+	@Override
+	public void execute() {
+		
+		MoveReceiverObservable.getInstance().move(piece, destination);
+		
+	}
+}

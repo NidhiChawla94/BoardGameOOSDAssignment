@@ -1,0 +1,157 @@
+<<<<<<< HEAD
+package com.oosd.model.power;
+
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Requires;
+import com.oosd.controller.BoardController;
+import com.oosd.model.Game;
+import com.oosd.model.Piece;
+
+public class Power extends PowerComponent {
+	
+	private String imageUrl; 
+	private Double strength;
+	
+	public Power() {
+		super();
+	}
+
+	public Power(String name, String type, Double strength, String imageUrl) {
+		super(name, type);
+		this.imageUrl = imageUrl;
+		this.strength = strength;
+	}
+
+	@Requires("power != null && attackedOnPiece != null")
+	@Ensures("attackedOnPiece.getLifeVolume() < old.attackedOnPiece.getLifeVolume());")
+	@Override
+	public void attack(Power power, Piece attackedOnPiece) {
+		
+		Double powerStrength = power.getStrength();
+		Double lifeVolume = attackedOnPiece.getLifeVolume();
+		if((lifeVolume - powerStrength) <= 0){
+			attackedOnPiece.setAlive(false);
+			attackedOnPiece.setLifeVolume(lifeVolume - powerStrength);
+			Game.getInstance().getBoard().getPieces().remove(attackedOnPiece);
+			BoardController.getInstance().notifyRerenderUI(true);
+		}else{
+			attackedOnPiece.setLifeVolume(lifeVolume - powerStrength);
+		}
+		BoardController.getInstance().originator.set(attackedOnPiece);
+		BoardController.getInstance().caretaker.addMemento(BoardController.getInstance().originator.createMemento());
+	}
+
+	public Double getStrength() {
+		return strength;
+	}
+
+	public void setStrength(Double strength) {
+		this.strength = strength;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	@Requires("imageUrl != null && !imageUrl.isEmpty()")
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+}
+=======
+package com.oosd.model.power;
+
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Requires;
+import com.oosd.controller.BoardController;
+import com.oosd.model.Game;
+import com.oosd.model.Piece;
+
+/**
+* 
+* @author  Siddharth Sachdeva
+* @version 1.0
+* @classDescription  Power class extends the PowerComponent
+* 					  				  
+* 
+*/
+public class Power extends PowerComponent {
+	
+	private String imageUrl; // Declare the power image 
+	private Double strength; // Declare the strength
+	
+	/**
+	 * CONSTRUCTOR
+	 */
+	public Power() {
+		super();
+	}
+
+	/**
+	 * 
+	 * @param name Declare the power name
+	 * @param type declare the power type
+	 * @param strength Declare the power strength
+	 * @param imageUrl Declare the power image
+	 */
+	public Power(String name, String type, Double strength, String imageUrl) {
+		super(name, type);
+		this.imageUrl = imageUrl;
+		this.strength = strength;
+	}
+
+	/**
+	 * 
+	 */
+	@Requires("power != null && attackedOnPiece != null")
+	@Ensures("attackedOnPiece.getLifeVolume() < old.attackedOnPiece.getLifeVolume());")
+	@Override
+	public void attack(Power power, Piece attackedOnPiece) {
+		
+		Double powerStrength = power.getStrength();
+		Double lifeVolume = attackedOnPiece.getLifeVolume();
+		if((lifeVolume - powerStrength) <= 0){
+			attackedOnPiece.setAlive(false);
+			attackedOnPiece.setLifeVolume(lifeVolume - powerStrength);
+			System.out.println(attackedOnPiece.getName()+ " is killed.");
+			Game.getInstance().getBoard().getPieces().remove(attackedOnPiece);
+			BoardController.getInstance().notifyRerenderUI(true);
+		}else{
+			attackedOnPiece.setLifeVolume(lifeVolume - powerStrength);
+		}
+		BoardController.getInstance().originator.set(attackedOnPiece);
+		BoardController.getInstance().caretaker.addMemento(BoardController.getInstance().originator.createMemento());
+	}
+
+	/**
+	 * get the strength
+	 * @return strength
+	 */
+	public Double getStrength() {
+		return strength;
+	}
+
+	/**
+	 * set the strength
+	 * @param strength
+	 */
+	public void setStrength(Double strength) {
+		this.strength = strength;
+	}
+	
+	/**
+	 * get the image Url
+	 * @return imageUrl
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	@Requires("imageUrl != null && !imageUrl.isEmpty()")
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+}
+>>>>>>> origin/master
